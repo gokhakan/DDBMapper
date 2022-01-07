@@ -22,9 +22,9 @@ public class DDBDemo {
                 .build();
 
         DynamoDBMapper mapper = new DynamoDBMapper(ddbClient);
-               //load(mapper);
-              // save(mapper);
-               query(mapper);
+               load(mapper);
+              //save(mapper);
+               //query(mapper);
                //delete(mapper);
 
 
@@ -75,11 +75,11 @@ public class DDBDemo {
     private static void save(DynamoDBMapper mapper) {
         //1- Basic Save
         Transaction t = new Transaction();
-        t.setTransactionId("t7");
-        t.setDate("2021-12-15");
-       // t.setType("PURCHASE");
-        t.setAmount(180);
-        t.setCustomer(Customer.builder().customerId("c7").customerName("Sarah Smith").build());
+        t.setTransactionId("t4");
+        t.setDate("2024-01-06");
+//        t.setType("PURCHASE");
+        t.setAmount(300);
+        t.setCustomer(Customer.builder().customerId("c4").customerName("Tina Turner").build());
 
         mapper.save(t);
 
@@ -89,10 +89,10 @@ public class DDBDemo {
     private static void load(DynamoDBMapper mapper) {
         //1. Basic Load
         Transaction t = new Transaction();
-        t.setTransactionId("t5");
-        t.setDate("2021-12-02");
+        t.setTransactionId("t9");
+        t.setDate("2021-12-16");
 
-        Transaction result = mapper.load(t);
+        String result = mapper.load(t).getCustomer().getCustomerName();
         System.out.println(result);
 
     }
